@@ -3,7 +3,6 @@ TERMÍNY:
 	27.3. Návrh matematickej knižnice - všetci
 	31.3. Naprogramovanie Matematickej knižnice -xharma05
 	3.4. GUI kalkulačky a hlavný program - xspirk01, xlojdo00
-	10.4. Makefile - xharma05
 	10.4. Profiling - xmichl11
 	17.4. Instalátor - xharma05
 	22.4. Finálna verzia GUI a hlavného programu - xspirk01, xlojdo00
