@@ -1,2 +1,2 @@
 # IVS-2022
-IVS team project
+IVS team project - Calculator
