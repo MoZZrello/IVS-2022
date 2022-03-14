@@ -1,0 +1,4 @@
+xharma05 100 (matematická knižnica, Makefile, inštalácia programu, debugging, Mock-up)
+xlojdo00 100 (hlavný program a GUI, Mock-up)
+xmichl11 100 (profiling, dokumentácia, Mock-up)
+xspirk01 100 (hlavný program a GUI, Mock-up)

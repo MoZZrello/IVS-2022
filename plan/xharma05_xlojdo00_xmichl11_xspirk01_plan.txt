@@ -1,0 +1,21 @@
+TERMÍNY:
+	20.3. GitHub setup - xharma05
+	27.3. Návrh matematickej knižnice - všetci
+	31.3. Naprogramovanie Matematickej knižnice -xharma05
+	3.4. GUI kalkulačky a hlavný program - xspirk01, xlojdo00
+	10.4. Makefile - xharma05
+	10.4. Profiling - xmichl11
+	17.4. Instalátor - xharma05
+	22.4. Finálna verzia GUI a hlavného programu - xspirk01, xlojdo00
+	22.4. Debug - xharma05
+	24.2. Mock-upy - všetci
+	24.2. Dokumentácia - xmichl11
+	29.4. Odovzdanie výsledného produktu - xharma05
+
+KOMUNIKAČNÉ KANÁLY:
+	- Discord
+	- Messenger
+	- Telefón
+
+VERZOVACÍ SYSTÉM:
+	- Github
