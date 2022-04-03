@@ -1,0 +1,1743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(34, 40, 49);
+
+
+</string>
+  </property>
+  <widget class="QPushButton" name="button_help">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>10</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:hover{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+border-radius: 25px;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>581</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 255, 255);
+border-radius: 5px;</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_logo">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton{
+color:rgb(255,255,255);
+border-style:none;
+background-image:url(:/Logo/calculator_logo.png);
+}
+
+QPushButton:hover{
+color:rgb(0,0,0);
+background-color:rgb(141, 191, 41);
+border-radius: 25px;
+
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>(</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_3">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_4">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>mc</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_5">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>m+</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_6">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>m-</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_7">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>⌫</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_8">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>mr</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_9">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>÷</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_10">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>C</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_11">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>150</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_12">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>x³</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_13">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_14">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>^</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_15">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>10^</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_16">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>x²</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_17">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>xⁿ</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_18">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>∛x</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_19">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>1/x</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_20">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>ln</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_21">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string> log10</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_22">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>√x</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_23">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>∜x</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_24">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>cos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_25">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>x!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_26">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>e</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_27">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>EXP</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_28">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>sin</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_29">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>tan</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_30">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>cosh</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_31">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>Rad</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_32">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>π</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_33">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>Rand</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_34">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>sinh</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_35">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>tanh</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_36">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_37">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_38">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_39">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_40">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>6</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_41">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>8</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_42">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>7</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_43">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>9</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_44">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_45">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_46">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>.</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_47">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>210</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>x</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_48">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>270</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_49">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>330</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(80, 87, 99);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(149, 153, 160);
+}</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_number_one_50">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>390</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+color:rgb(255,255,255);
+background-color:rgb(0, 196, 206);
+border-style:none
+}
+
+QPushButton:pressed{
+color:rgb(0,0,0);
+background-color:rgb(107, 233, 239);
+}</string>
+   </property>
+   <property name="text">
+    <string>=</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
