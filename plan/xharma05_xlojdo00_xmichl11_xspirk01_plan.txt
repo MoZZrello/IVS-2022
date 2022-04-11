@@ -7,8 +7,8 @@ TERMÍNY:
 	17.4. Instalátor - xharma05
 	22.4. Finálna verzia GUI a hlavného programu - xspirk01, xlojdo00
 	22.4. Debug - xharma05
-	24.2. Mock-upy - všetci
-	24.2. Dokumentácia - xmichl11
+	24.4. Mock-upy - všetci
+	24.4. Dokumentácia - xmichl11
 	29.4. Odovzdanie výsledného produktu - xharma05
 
 KOMUNIKAČNÉ KANÁLY:
