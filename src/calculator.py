@@ -94,7 +94,7 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
                 elemCount += 1
                 continue
 
-        if finish == round(finish):
+        if finish == int(finish):
             finish = int(finish)
         return str(finish)
 
