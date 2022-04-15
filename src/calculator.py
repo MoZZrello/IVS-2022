@@ -39,8 +39,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.button_sqrt.clicked.connect(lambda: self.pushed_math_operand((chr(8730))))
         self.button_equal.clicked.connect(lambda: self.equals())
 
-        self.button_delete.clicked.connect(lambda: self.clear_last_number)
-        self.button_delete.clicked.connect(lambda: self.clear_all)
+        self.button_delete.clicked.connect(lambda: self.clear_last_number())
+        self.button_clear_all.clicked.connect(lambda: self.clear_all())
 
     def mathParse(self, txt):
         finish = 0
@@ -61,34 +61,36 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         elemCount = 0
         for elem in parts:
             if elem == "+":
-                if type(parts[elemCount-1]) == float and type(parts[elemCount+1]) == float:
-                    finish = mathlib.add(parts[elemCount-1], parts[elemCount+1])
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.add(finish, parts[elemCount+1])
                     elemCount += 2
                 else:
                     print("Err")
                     sys.exit(1)
             elif elem == "-":
-                if type(parts[elemCount-1]) == float and type(parts[elemCount+1]) == float:
-                    finish = mathlib.sub(parts[elemCount-1], parts[elemCount+1])
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.sub(finish, parts[elemCount+1])
                     elemCount += 2
                 else:
                     print("Err")
                     sys.exit(1)
             elif elem == "/":
-                if type(parts[elemCount-1]) == float and type(parts[elemCount+1]) == float:
-                    finish = mathlib.divide(parts[elemCount-1], parts[elemCount+1])
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.divide(finish, parts[elemCount+1])
                     elemCount += 2
                 else:
                     print("Err")
                     sys.exit(1)
             elif elem == "*":
-                if type(parts[elemCount-1]) == float and type(parts[elemCount+1]) == float:
-                    finish = mathlib.multiply(parts[elemCount-1], parts[elemCount+1])
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.multiply(finish, parts[elemCount+1])
                     elemCount += 2
                 else:
                     print("Err")
                     sys.exit(1)
             else:
+                if elemCount == 0:
+                    finish = parts[elemCount]
                 elemCount += 1
                 continue
 
@@ -98,12 +100,15 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
 
     def equals(self):
         global memory
+        global numbers
         upper_display_text = ""
         for char in memory:
             upper_display_text += char
         self.display_top.setText(upper_display_text)
         out = self.mathParse(upper_display_text)
         self.display_bottom.setText(out)
+        memory.clear()
+        numbers = 0
 
     def pushed_math_operand(self, operand):
         global numbers
@@ -129,10 +134,22 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             self.display_bottom.setText(text + num)
 
     def clear_last_number(self):
-        self.display_bottom.setText("")
+        global numbers
+        global memory
+        text = ""
+        text = self.display_bottom.text()
+        text = text[:-1]
+        memory.pop()
+        self.display_bottom.setText(text)
+        numbers -= 1
 
     def clear_all(self):
-        self.display_bottom.setText("")
+        global numbers
+        global memory
+        self.display_bottom.setText("0")
+        memory.clear()
+        numbers = 0
+
 
 
 
