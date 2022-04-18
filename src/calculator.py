@@ -6,6 +6,7 @@ from PySide2 import *
 
 memory = []
 numbers = 0
+sqrt = chr(8730)
 
 class Calculator_Window(QtWidgets.QMainWindow, window_calc):
     def __init__(self):
@@ -36,7 +37,7 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.button_close.clicked.connect(lambda: self.pushed_math_operand(")"))
         self.button_e.clicked.connect(lambda: self.pushed_math_operand("e"))
         self.button_factorial.clicked.connect(lambda: self.pushed_math_operand("!"))
-        self.button_sqrt.clicked.connect(lambda: self.pushed_math_operand((chr(8730))))
+        self.button_sqrt.clicked.connect(lambda: self.pushed_math_operand(sqrt))
         self.button_equal.clicked.connect(lambda: self.equals())
 
         self.button_delete.clicked.connect(lambda: self.clear_last_number())
@@ -50,11 +51,11 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         for char in txt:
             if char == "0" or char == "1" or char == "2" or char == "3" or char == "4" or char == "5" or char == "6" or char == "7" or char == "8" or char == "9" or char == ".":
                 tmp += char
-            elif char == "+" or char == "-" or char == "*" or char == "/" or char == "e" or char == "!" or char == "^" or char == "(" or char == ")":
+            elif char == "+" or char == "-" or char == sqrt or char == "*" or char == "/" or char == "e" or char == "!" or char == "^" or char == "(" or char == ")":
                 parts.append(float(tmp))
                 tmp = ""
                 parts.append(char)
-            if count == len(txt):
+            if count == len(txt) and len(tmp) != 0:
                 parts.append(float(tmp))
             count += 1
 
@@ -88,12 +89,34 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
                 else:
                     print("Err")
                     sys.exit(1)
+            elif elem == "^":
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.exponent(finish, parts[elemCount+1])
+                    elemCount += 2
+                else:
+                    print("Err")
+                    sys.exit(1)
+            elif elem == "!":
+                if type(parts[elemCount-1]) == float:
+                    if int(parts[elemCount-1]) != parts[elemCount-1]:
+                        exit(1)
+                    finish = mathlib.fact(int(parts[elemCount-1]))
+                    elemCount += 1
+                else:
+                    print("Err")
+                    sys.exit(1)
+            elif elem == sqrt:
+                if type(parts[elemCount+1]) == float:
+                    finish = mathlib.sqrt(finish, parts[elemCount+1])
+                    elemCount += 2
+                else:
+                    print("Err")
+                    sys.exit(1)
             else:
                 if elemCount == 0:
                     finish = parts[elemCount]
                 elemCount += 1
                 continue
-
         if finish == int(finish):
             finish = int(finish)
         return str(finish)
