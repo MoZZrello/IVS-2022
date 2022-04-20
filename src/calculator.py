@@ -7,6 +7,7 @@ from PySide2 import *
 memory = []
 numbers = 0
 sqrt = chr(8730)
+pars = False
 
 class Calculator_Window(QtWidgets.QMainWindow, window_calc):
     def __init__(self):
@@ -122,10 +123,12 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
 
 
 def calcRec(numlist):
+    global pars
     finish = 0
     elemCount = 0
     openPar = 0
     closePar = 0
+    tmplist = []
     for part in numlist:
         if part == '(':
             openPar += 1
@@ -137,57 +140,37 @@ def calcRec(numlist):
     if closePar != openPar:
         raise ValueError("Number of brackets don't match")
 
-    i = lastOpenPos
-    del numlist[i]
-    tmplist = []
-    while numlist[i] != ')':
-        tmplist.append(numlist[i])
+    if openPar != 0:
+        pars = True
+        i = lastOpenPos
         del numlist[i]
-    del numlist[i]
-    print(tmplist)
-    numlist.insert(lastOpenPos, numCalc(tmplist))
-    print(numlist)
+        while numlist[i] != ')':
+            tmplist.append(numlist[i])
+            del numlist[i]
+        del numlist[i]
+        numlist.insert(lastOpenPos, numCalc(tmplist))
+    else:
+        tmplist = numlist
+        numlist = []
+        numlist.insert(0, numCalc(tmplist))
+
     if len(numlist) != 1:
         calcRec(numlist)
-    return numlist[0]
+    return round(numlist[0], 4)
 
 
 def numCalc(numList):
-    finish = 69
     elemCount = 0
+    tmp = 0
     for elem in numList:
-        if elem == "+":
+        if elem == "^":
             if type(numList[elemCount + 1]) == float:
-                finish = mathlib.add(finish, numList[elemCount + 1])
-                elemCount += 2
-            else:
-                print("Err")
-                sys.exit(1)
-        elif elem == "-":
-            if type(numList[elemCount + 1]) == float:
-                finish = mathlib.sub(finish, numList[elemCount + 1])
-                elemCount += 2
-            else:
-                print("Err")
-                sys.exit(1)
-        elif elem == "/":
-            if type(numList[elemCount + 1]) == float:
-                finish = mathlib.divide(finish, numList[elemCount + 1])
-                elemCount += 2
-            else:
-                print("Err")
-                sys.exit(1)
-        elif elem == "*":
-            if type(numList[elemCount + 1]) == float:
-                finish = mathlib.multiply(finish, numList[elemCount + 1])
-                elemCount += 2
-            else:
-                print("Err")
-                sys.exit(1)
-        elif elem == "^":
-            if type(numList[elemCount + 1]) == float:
-                finish = mathlib.exponent(finish, numList[elemCount + 1])
-                elemCount += 2
+                tmp = mathlib.exponent(numList[elemCount-1], numList[elemCount + 1])
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount - 1, tmp)
+                numCalc(numList)
             else:
                 print("Err")
                 sys.exit(1)
@@ -195,25 +178,85 @@ def numCalc(numList):
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
                     exit(1)
-                finish = mathlib.fact(int(numList[elemCount - 1]))
-                elemCount += 1
+                tmp = mathlib.fact(int(numList[elemCount - 1]))
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount-1, tmp)
+                numCalc(numList)
             else:
                 print("Err")
                 sys.exit(1)
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
-                finish = mathlib.sqrt(numList[elemCount + 1], 2)
-                elemCount += 2
+                tmp = mathlib.sqrt(numList[elemCount + 1], 2)
+                del numList[elemCount]
+                del numList[elemCount]
+                numList.insert(elemCount, tmp)
+                numCalc(numList)
             else:
                 print("Err")
                 sys.exit(1)
         else:
-            if elemCount == 0:
-                finish = numList[elemCount]
             elemCount += 1
             continue
 
-    return finish
+    elemCount = 0
+    for elem in numList:
+        if elem == "/":
+            if type(numList[elemCount + 1]) == float:
+                tmp = mathlib.divide(numList[elemCount - 1], numList[elemCount + 1])
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount - 1, tmp)
+                numCalc(numList)
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "*":
+            if type(numList[elemCount + 1]) == float:
+                tmp = mathlib.multiply(numList[elemCount - 1], numList[elemCount + 1])
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount - 1, tmp)
+                numCalc(numList)
+            else:
+                print("Err")
+                sys.exit(1)
+        else:
+            elemCount += 1
+            continue
+
+    elemCount = 0
+    for elem in numList:
+        if elem == "+":
+            if type(numList[elemCount + 1]) == float:
+                tmp = mathlib.add(numList[elemCount - 1], numList[elemCount + 1])
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount - 1, tmp)
+                numCalc(numList)
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "-":
+            if type(numList[elemCount + 1]) == float:
+                tmp = mathlib.sub(numList[elemCount - 1], numList[elemCount + 1])
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                del numList[elemCount - 1]
+                numList.insert(elemCount - 1, tmp)
+                numCalc(numList)
+            else:
+                print("Err")
+                sys.exit(1)
+        else:
+            elemCount += 1
+            continue
+
+    return numList[0]
 
 
 
