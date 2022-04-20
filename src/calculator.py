@@ -138,7 +138,7 @@ def calcRec(numlist):
         elemCount += 1
 
     if closePar != openPar:
-        raise ValueError("Number of brackets don't match")
+        raise ValueError
 
     if openPar != 0:
         pars = True
@@ -172,8 +172,8 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
+
         elif elem == "!":
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
@@ -184,8 +184,8 @@ def numCalc(numList):
                 numList.insert(elemCount-1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
+
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
                 tmp = mathlib.sqrt(numList[elemCount + 1], 2)
@@ -194,8 +194,7 @@ def numCalc(numList):
                 numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
         else:
             elemCount += 1
             continue
@@ -211,8 +210,8 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
+
         elif elem == "*":
             if type(numList[elemCount + 1]) == float:
                 tmp = mathlib.multiply(numList[elemCount - 1], numList[elemCount + 1])
@@ -222,8 +221,7 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
         else:
             elemCount += 1
             continue
@@ -239,8 +237,8 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
+
         elif elem == "-":
             if type(numList[elemCount + 1]) == float:
                 tmp = mathlib.sub(numList[elemCount - 1], numList[elemCount + 1])
@@ -250,8 +248,7 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                print("Err")
-                sys.exit(1)
+                raise ValueError
         else:
             elemCount += 1
             continue

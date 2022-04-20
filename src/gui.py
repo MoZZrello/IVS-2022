@@ -78,7 +78,7 @@ class window_calc(object):
 "}")
         self.display_bottom = QLabel(self.centralwidget)
         self.display_bottom.setObjectName(u"display_bottom")
-        self.display_bottom.setGeometry(QRect(0, 41, 244, 61))
+        self.display_bottom.setGeometry(QRect(-9, 45, 254, 61))
         font1 = QFont()
         font1.setFamily(u"Microsoft YaHei UI")
         font1.setPointSize(24)
