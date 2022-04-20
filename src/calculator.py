@@ -44,7 +44,6 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.button_clear_all.clicked.connect(lambda: self.clear_all())
 
     def mathParse(self, txt):
-        finish = 0
         tmp = ""
         parts = []
         count = 1
@@ -52,71 +51,19 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             if char == "0" or char == "1" or char == "2" or char == "3" or char == "4" or char == "5" or char == "6" or char == "7" or char == "8" or char == "9" or char == ".":
                 tmp += char
             elif char == "+" or char == "-" or char == sqrt or char == "*" or char == "/" or char == "e" or char == "!" or char == "^" or char == "(" or char == ")":
-                parts.append(float(tmp))
+                if tmp != "":
+                    parts.append(float(tmp))
                 tmp = ""
                 parts.append(char)
             if count == len(txt) and len(tmp) != 0:
                 parts.append(float(tmp))
             count += 1
 
-        elemCount = 0
-        for elem in parts:
-            if elem == "+":
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.add(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == "-":
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.sub(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == "/":
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.divide(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == "*":
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.multiply(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == "^":
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.exponent(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == "!":
-                if type(parts[elemCount-1]) == float:
-                    if int(parts[elemCount-1]) != parts[elemCount-1]:
-                        exit(1)
-                    finish = mathlib.fact(int(parts[elemCount-1]))
-                    elemCount += 1
-                else:
-                    print("Err")
-                    sys.exit(1)
-            elif elem == sqrt:
-                if type(parts[elemCount+1]) == float:
-                    finish = mathlib.sqrt(finish, parts[elemCount+1])
-                    elemCount += 2
-                else:
-                    print("Err")
-                    sys.exit(1)
-            else:
-                if elemCount == 0:
-                    finish = parts[elemCount]
-                elemCount += 1
-                continue
+        try:
+            finish = calcRec(parts)
+        except ValueError:
+            return "Syntax Error"
+
         if finish == int(finish):
             finish = int(finish)
         return str(finish)
@@ -173,6 +120,100 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         memory.clear()
         numbers = 0
 
+
+def calcRec(numlist):
+    finish = 0
+    elemCount = 0
+    openPar = 0
+    closePar = 0
+    for part in numlist:
+        if part == '(':
+            openPar += 1
+            lastOpenPos = elemCount
+        if part == ')':
+            closePar += 1
+        elemCount += 1
+
+    if closePar != openPar:
+        raise ValueError("Number of brackets don't match")
+
+    i = lastOpenPos
+    del numlist[i]
+    tmplist = []
+    while numlist[i] != ')':
+        tmplist.append(numlist[i])
+        del numlist[i]
+    del numlist[i]
+    print(tmplist)
+    numlist.insert(lastOpenPos, numCalc(tmplist))
+    print(numlist)
+    if len(numlist) != 1:
+        calcRec(numlist)
+    return numlist[0]
+
+
+def numCalc(numList):
+    finish = 69
+    elemCount = 0
+    for elem in numList:
+        if elem == "+":
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.add(finish, numList[elemCount + 1])
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "-":
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.sub(finish, numList[elemCount + 1])
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "/":
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.divide(finish, numList[elemCount + 1])
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "*":
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.multiply(finish, numList[elemCount + 1])
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "^":
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.exponent(finish, numList[elemCount + 1])
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == "!":
+            if type(numList[elemCount - 1]) == float:
+                if int(numList[elemCount - 1]) != numList[elemCount - 1]:
+                    exit(1)
+                finish = mathlib.fact(int(numList[elemCount - 1]))
+                elemCount += 1
+            else:
+                print("Err")
+                sys.exit(1)
+        elif elem == sqrt:
+            if type(numList[elemCount + 1]) == float:
+                finish = mathlib.sqrt(numList[elemCount + 1], 2)
+                elemCount += 2
+            else:
+                print("Err")
+                sys.exit(1)
+        else:
+            if elemCount == 0:
+                finish = numList[elemCount]
+            elemCount += 1
+            continue
+
+    return finish
 
 
 
