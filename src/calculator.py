@@ -63,6 +63,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         try:
             finish = calcRec(parts)
         except ValueError:
+            return "Math Error"
+        except SyntaxError:
             return "Syntax Error"
 
         if finish == int(finish):
@@ -138,7 +140,7 @@ def calcRec(numlist):
         elemCount += 1
 
     if closePar != openPar:
-        raise ValueError
+        raise SyntaxError
 
     if openPar != 0:
         pars = True
@@ -159,6 +161,7 @@ def calcRec(numlist):
     return round(numlist[0], 4)
 
 
+
 def numCalc(numList):
     elemCount = 0
     tmp = 0
@@ -172,19 +175,19 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
 
         elif elem == "!":
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
-                    exit(1)
+                    raise ValueError
                 tmp = mathlib.fact(int(numList[elemCount - 1]))
                 del numList[elemCount - 1]
                 del numList[elemCount - 1]
                 numList.insert(elemCount-1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
 
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
@@ -194,7 +197,7 @@ def numCalc(numList):
                 numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
         else:
             elemCount += 1
             continue
@@ -210,7 +213,8 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
+
 
         elif elem == "*":
             if type(numList[elemCount + 1]) == float:
@@ -221,7 +225,7 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
         else:
             elemCount += 1
             continue
@@ -237,7 +241,7 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
 
         elif elem == "-":
             if type(numList[elemCount + 1]) == float:
@@ -248,7 +252,7 @@ def numCalc(numList):
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
-                raise ValueError
+                raise SyntaxError
         else:
             elemCount += 1
             continue
