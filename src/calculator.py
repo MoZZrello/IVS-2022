@@ -53,11 +53,17 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
                 tmp += char
             elif char == "+" or char == "-" or char == sqrt or char == "*" or char == "/" or char == "e" or char == "!" or char == "^" or char == "(" or char == ")":
                 if tmp != "":
-                    parts.append(float(tmp))
+                    try:
+                        parts.append(float(tmp))
+                    except ValueError:
+                        return "Syntax Error"
                 tmp = ""
                 parts.append(char)
             if count == len(txt) and len(tmp) != 0:
-                parts.append(float(tmp))
+                try:
+                    parts.append(float(tmp))
+                except ValueError:
+                    return "Syntax Error"
             count += 1
 
         try:
@@ -87,6 +93,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         global numbers
         global memory
         text = self.display_bottom.text()
+        if text == "Math Error" or text == "Syntax Error":
+            text = "0"
         if numbers == 0:
             if int(text) != 0:
                 memory.append(text)
@@ -106,6 +114,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         global numbers
         global memory
         text = self.display_bottom.text()
+        if text == "Math Error" or text == "Syntax Error":
+            text = ""
         memory.append(num)
         if numbers == 0:
             self.display_bottom.setText(num)
