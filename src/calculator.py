@@ -87,11 +87,18 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         global numbers
         global memory
         text = self.display_bottom.text()
-        memory.append(operand)
         if numbers == 0:
-            self.display_bottom.setText(operand)
+            if int(text) != 0:
+                memory.append(text)
+                numbers += 1
+                memory.append(operand)
+                self.display_bottom.setText(text + operand)
+            else:
+                memory.append(operand)
+                self.display_bottom.setText(operand)
             numbers += 1
         else:
+            memory.append(operand)
             self.display_bottom.setText(text + operand)
             numbers += 1
 
@@ -112,9 +119,13 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         text = ""
         text = self.display_bottom.text()
         text = text[:-1]
-        memory.pop()
+        if len(memory) > 0:
+            memory.pop()
+            numbers -= 1
+        else:
+            numbers += 1
         self.display_bottom.setText(text)
-        numbers -= 1
+        memory.append(text)
 
     def clear_all(self):
         global numbers
@@ -135,6 +146,12 @@ def calcRec(numlist):
         if part == '(':
             openPar += 1
             lastOpenPos = elemCount
+            if type(numlist[elemCount-1]) == float:
+                numlist.insert(elemCount, "*")
+                calcRec(numlist)
+                openPar = 0
+                closePar = 0
+                break
         if part == ')':
             closePar += 1
         elemCount += 1
@@ -168,10 +185,13 @@ def numCalc(numList):
     for elem in numList:
         if elem == "^":
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.exponent(numList[elemCount-1], numList[elemCount + 1])
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.exponent(numList[elemCount-1], numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    raise SyntaxError
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
@@ -181,9 +201,12 @@ def numCalc(numList):
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
                     raise ValueError
-                tmp = mathlib.fact(int(numList[elemCount - 1]))
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.fact(int(numList[elemCount - 1]))
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    raise SyntaxError
                 numList.insert(elemCount-1, tmp)
                 numCalc(numList)
             else:
@@ -191,9 +214,12 @@ def numCalc(numList):
 
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.sqrt(numList[elemCount + 1], 2)
-                del numList[elemCount]
-                del numList[elemCount]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.sqrt(numList[elemCount + 1], 2)
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    raise SyntaxError
                 numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
@@ -206,10 +232,13 @@ def numCalc(numList):
     for elem in numList:
         if elem == "/":
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.divide(numList[elemCount - 1], numList[elemCount + 1])
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.divide(numList[elemCount - 1], numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    raise SyntaxError
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
@@ -218,10 +247,13 @@ def numCalc(numList):
 
         elif elem == "*":
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.multiply(numList[elemCount - 1], numList[elemCount + 1])
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.multiply(numList[elemCount - 1], numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    raise SyntaxError
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
@@ -234,10 +266,15 @@ def numCalc(numList):
     for elem in numList:
         if elem == "+":
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.add(numList[elemCount - 1], numList[elemCount + 1])
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount-1 > -1:
+                    tmp = mathlib.add(numList[elemCount - 1], numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    tmp = mathlib.add(0, numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
@@ -245,10 +282,15 @@ def numCalc(numList):
 
         elif elem == "-":
             if type(numList[elemCount + 1]) == float:
-                tmp = mathlib.sub(numList[elemCount - 1], numList[elemCount + 1])
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
-                del numList[elemCount - 1]
+                if elemCount - 1 > -1:
+                    tmp = mathlib.sub(numList[elemCount - 1], numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
+                else:
+                    tmp = mathlib.sub(0, numList[elemCount + 1])
+                    del numList[elemCount - 1]
+                    del numList[elemCount - 1]
                 numList.insert(elemCount - 1, tmp)
                 numCalc(numList)
             else:
