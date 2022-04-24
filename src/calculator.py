@@ -1,6 +1,11 @@
+"""
+    @file calculator.py
+    @author Richard Harman, Marek Špirka
+"""
+
+""" @package Použivame PYQT5 pre výzor, našu matematickú knižnicu a naše gui"""
 from PyQt5 import QtWidgets
 from gui import window_calc
-import sys
 import mathlib
 from PySide2 import *
 
@@ -10,6 +15,13 @@ sqrt = chr(8730)
 pars = False
 
 class Calculator_Window(QtWidgets.QMainWindow, window_calc):
+    """
+        @class Okno aplikácie kalkulačky so sovjimi funkciami a mapovaním tlačidiel a výpisov
+    """
+    """
+        @param self
+        @brief Inicializuje okno a namapuje tlačidlá a výpisy
+    """
     def __init__(self):
         global memory
         super(Calculator_Window, self).__init__()
@@ -44,6 +56,13 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.button_delete.clicked.connect(lambda: self.clear_last_number())
         self.button_clear_all.clicked.connect(lambda: self.clear_all())
 
+    """ 
+        @params self, txt
+        @brief rozseká input string na časti (čísla a znamienka) a uloží ich do poľa, následne zavolá počítanie
+        @see calcRec
+        @see numCalc
+        @return výsledok výpočtu
+    """
     def mathParse(self, txt):
         tmp = ""
         parts = []
