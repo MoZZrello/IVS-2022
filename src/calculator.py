@@ -224,7 +224,6 @@ def calcRec(numlist):
 
 
 def numCalc(numList):
-    print(numList, "prichodzy list")
     elemCount = 0
     tmp = 0
     for elem in numList:
@@ -316,17 +315,17 @@ def numCalc(numList):
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
+                    numList.insert(elemCount - 1, tmp)
                 else:
                     tmp = mathlib.add(0, numList[elemCount + 1])
-                    del numList[elemCount - 1]
-                    del numList[elemCount - 1]
-                numList.insert(elemCount - 1, tmp)
+                    del numList[elemCount]
+                    del numList[elemCount]
+                    numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
                 raise SyntaxError
 
         elif elem == "-":
-            print(numList, elemCount, "found -")
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
                     tmp = mathlib.sub(numList[elemCount - 1], numList[elemCount + 1])
@@ -345,7 +344,7 @@ def numCalc(numList):
         else:
             elemCount += 1
             continue
-    print(numList[0], "vysledok")
+
     return numList[0]
 
 
