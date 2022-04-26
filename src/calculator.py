@@ -29,7 +29,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.setupUi(self)
         self.show()
         self.setFixedSize(245, 495)
-        self.setWindowTitle("Calculator")
+        self.setWindowTitle("XOcalc")
+        self.setWindowIcon(QtGui.QIcon('calculator_logo.png'))
 
         self.button_number_zero.clicked.connect(lambda: self.pushed_number("0"))
         self.button_number_one.clicked.connect(lambda: self.pushed_number("1"))
