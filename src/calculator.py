@@ -29,7 +29,8 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.setupUi(self)
         self.show()
         self.setFixedSize(245, 495)
-        self.setWindowTitle("Calculator")
+        self.setWindowTitle("XOcalc")
+        self.setWindowIcon(QtGui.QIcon('calculator_logo.png'))
 
         self.button_number_zero.clicked.connect(lambda: self.pushed_number("0"))
         self.button_number_one.clicked.connect(lambda: self.pushed_number("1"))
@@ -95,6 +96,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
 
         return str(finish)
 
+    """ 
+        @params self
+        @brief Pri stlačení tlačidla '=' spustí výpoČet a zapíše následne výsledok
+    """
     def equals(self):
         global memory
         global numbers
@@ -109,6 +114,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         memory.clear()
         numbers = 0
 
+    """ 
+        @params self, operand
+        @brief Pri stlačení tlačidla nejakého operandu, ho pripíše na obrazovku a uloží do pamäte
+    """
     def pushed_math_operand(self, operand):
         global numbers
         global memory
@@ -136,6 +145,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             self.display_bottom.setText(text + operand)
             numbers += 1
 
+    """ 
+        @params self, num
+        @brief Pri stlačení tlačidla nejakého čísla, ho pripíše na obrazovku a uloží do pamäte
+    """
     def pushed_number(self, num):
         global numbers
         global memory
@@ -149,6 +162,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         else:
             self.display_bottom.setText(text + num)
 
+    """ 
+        @params self
+        @brief Odstráni posledný znak zo zápisu aj pamäte
+    """
     def clear_last_number(self):
         global numbers
         global memory
@@ -163,6 +180,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.display_bottom.setText(text)
         memory.append(text)
 
+    """ 
+        @params self
+        @brief Vyprázdni pamäť
+    """
     def clear_all(self):
         global numbers
         global memory
@@ -171,6 +192,12 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         numbers = 0
 
 
+""" 
+    @params numlist
+    @brief Rozdelí príklady na podpríklady na základe zátvoriek. Tieto podpríklady pošle následne do numCalc
+    @see numCalc
+    @return Výsledok výpočtu
+"""
 def calcRec(numlist):
     global pars
     finish = 0
@@ -223,6 +250,11 @@ def calcRec(numlist):
     return numlist[0]
 
 
+""" 
+    @params numlist
+    @brief Vypočíta príklad podľa dôležitosti operandu. najprv '^,!,sqrt', potom '*,/' a nakoniec '+,-'
+    @return Výsledok medzivýpočtu
+"""
 def numCalc(numList):
     elemCount = 0
     tmp = 0
@@ -240,7 +272,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == "!":
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
@@ -255,7 +286,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
@@ -287,8 +317,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
-
         elif elem == "*":
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
@@ -324,7 +352,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == "-":
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
