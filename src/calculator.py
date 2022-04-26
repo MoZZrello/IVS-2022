@@ -13,6 +13,7 @@ memory = []
 numbers = 0
 sqrt = chr(8730)
 pars = False
+eq = False
 
 class Calculator_Window(QtWidgets.QMainWindow, window_calc):
     """
@@ -92,13 +93,17 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         except SyntaxError:
             return "Syntax Error"
 
-        if finish == int(finish):
-            finish = int(finish)
         return str(finish)
 
+    """ 
+        @params self
+        @brief Pri stlačení tlačidla '=' spustí výpoČet a zapíše následne výsledok
+    """
     def equals(self):
         global memory
         global numbers
+        global eq
+        eq = True
         upper_display_text = ""
         for char in memory:
             upper_display_text += char
@@ -108,16 +113,26 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         memory.clear()
         numbers = 0
 
+    """ 
+        @params self, operand
+        @brief Pri stlačení tlačidla nejakého operandu, ho pripíše na obrazovku a uloží do pamäte
+    """
     def pushed_math_operand(self, operand):
         global numbers
         global memory
+        global eq
         text = self.display_bottom.text()
         if text == "Math Error" or text == "Syntax Error":
-            text = "0"
-        if numbers == 0:
-            if int(text) != 0:
-                memory.append(text)
-                numbers += 1
+            text = ""
+        if eq:
+            if 'E' in text:
+                text = str(float(text))
+            if 'e' in text:
+                text = "{:.9f}".format(float(text))
+            if len(text) > 1 or int(text) != 0:
+                if numbers == 0:
+                    memory.append(text)
+                    numbers += 1
                 memory.append(operand)
                 self.display_bottom.setText(text + operand)
             else:
@@ -129,6 +144,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             self.display_bottom.setText(text + operand)
             numbers += 1
 
+    """ 
+        @params self, num
+        @brief Pri stlačení tlačidla nejakého čísla, ho pripíše na obrazovku a uloží do pamäte
+    """
     def pushed_number(self, num):
         global numbers
         global memory
@@ -142,6 +161,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         else:
             self.display_bottom.setText(text + num)
 
+    """ 
+        @params self
+        @brief Odstráni posledný znak zo zápisu aj pamäte
+    """
     def clear_last_number(self):
         global numbers
         global memory
@@ -156,6 +179,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.display_bottom.setText(text)
         memory.append(text)
 
+    """ 
+        @params self
+        @brief Vyprázdni pamäť
+    """
     def clear_all(self):
         global numbers
         global memory
@@ -164,6 +191,12 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         numbers = 0
 
 
+""" 
+    @params numlist
+    @brief Rozdelí príklady na podpríklady na základe zátvoriek. Tieto podpríklady pošle následne do numCalc
+    @see numCalc
+    @return Výsledok výpočtu
+"""
 def calcRec(numlist):
     global pars
     finish = 0
@@ -204,10 +237,23 @@ def calcRec(numlist):
 
     if len(numlist) != 1:
         calcRec(numlist)
-    return round(numlist[0], 4)
+
+    if numlist[0] == int(numlist[0]):
+        numlist[0] = int(numlist[0])
+    if len(str(numlist[0])) > 7:
+        numlist[0] = "{:.2E}".format(numlist[0])
+    elif numlist[0] < 0.001 and numlist[0] > -0.001:
+        numlist[0] = "{:.2E}".format(numlist[0])
+    else:
+        numlist[0] = round(numlist[0], 4)
+    return numlist[0]
 
 
-
+""" 
+    @params numlist
+    @brief Vypočíta príklad podľa dôležitosti operandu. najprv '^,!,sqrt', potom '*,/' a nakoniec '+,-'
+    @return Výsledok medzivýpočtu
+"""
 def numCalc(numList):
     elemCount = 0
     tmp = 0
@@ -225,7 +271,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == "!":
             if type(numList[elemCount - 1]) == float:
                 if int(numList[elemCount - 1]) != numList[elemCount - 1]:
@@ -240,7 +285,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
@@ -272,8 +316,6 @@ def numCalc(numList):
                 numCalc(numList)
             else:
                 raise SyntaxError
-
-
         elif elem == "*":
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
@@ -300,15 +342,15 @@ def numCalc(numList):
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
+                    numList.insert(elemCount - 1, tmp)
                 else:
                     tmp = mathlib.add(0, numList[elemCount + 1])
-                    del numList[elemCount - 1]
-                    del numList[elemCount - 1]
-                numList.insert(elemCount - 1, tmp)
+                    del numList[elemCount]
+                    del numList[elemCount]
+                    numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
                 raise SyntaxError
-
         elif elem == "-":
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
@@ -316,11 +358,12 @@ def numCalc(numList):
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
                     del numList[elemCount - 1]
+                    numList.insert(elemCount - 1, tmp)
                 else:
                     tmp = mathlib.sub(0, numList[elemCount + 1])
-                    del numList[elemCount - 1]
-                    del numList[elemCount - 1]
-                numList.insert(elemCount - 1, tmp)
+                    del numList[elemCount]
+                    del numList[elemCount]
+                    numList.insert(elemCount, tmp)
                 numCalc(numList)
             else:
                 raise SyntaxError
@@ -329,7 +372,6 @@ def numCalc(numList):
             continue
 
     return numList[0]
-
 
 
 
