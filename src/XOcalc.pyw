@@ -1,7 +1,7 @@
 """
-    @file main.py
+    @file XOcalc.pyw
     @author Marek Špirka
-    @package Importujeme kalkulačku z iného súboru a používame PySide2 pre aplikáciu
+    @brief Zapnutie celej kalkulačky
 """
 import sys
 from calculator import Calculator_Window
