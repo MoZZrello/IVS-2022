@@ -7,7 +7,7 @@
 from PyQt5 import QtWidgets
 from gui import window_calc
 import mathlib
-from PySide2 import *
+from PySide2 import QtWidgets, QtGui
 
 memory = []
 numbers = 0
@@ -386,7 +386,6 @@ def numCalc(numList):
             elemCount += 1
             continue
 
-    print(numList, "vysledok")
     return numList[0]
 
 
