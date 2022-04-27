@@ -218,6 +218,7 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             numbers += 1
         else:
             self.display_bottom.setText(text + num)
+            numbers += 1
 
     """ 
         @params self
@@ -231,7 +232,9 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         text = text[:-1]
         if len(memory) > 0:
             memory.clear()
-            numbers -= 1
+            for char in text:
+                if char.isnumeric():
+                    numbers += 1
         else:
             numbers += 1
         self.display_bottom.setText(text)
@@ -298,9 +301,11 @@ def calcRec(numlist):
 
     if numlist[0] == int(numlist[0]):
         numlist[0] = int(numlist[0])
-    if len(str(numlist[0])) > 7:
+    if -0.001 < numlist[0] < 0.001:
         numlist[0] = "{:.2E}".format(numlist[0])
-    elif numlist[0] < 0.001 and numlist[0] > -0.001:
+    elif -1000 < numlist[0] < 1000:
+        numlist[0] = round(numlist[0], 3)
+    elif len(str(numlist[0])) > 7:
         numlist[0] = "{:.2E}".format(numlist[0])
     else:
         numlist[0] = round(numlist[0], 4)
