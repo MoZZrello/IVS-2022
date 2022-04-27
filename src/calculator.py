@@ -140,6 +140,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
                 memory.append(operand)
                 self.display_bottom.setText(operand)
             numbers += 1
+        elif numbers == 0:
+            memory.append(operand)
+            self.display_bottom.setText(operand)
+            numbers += 1
         else:
             memory.append(operand)
             self.display_bottom.setText(text + operand)
@@ -289,9 +293,19 @@ def numCalc(numList):
         elif elem == sqrt:
             if type(numList[elemCount + 1]) == float:
                 if elemCount - 1 > -1:
+                    if type(numList[elemCount - 1]) == float:
+                        tmp = mathlib.sqrt(numList[elemCount + 1], numList[elemCount - 1])
+                        del numList[elemCount - 1]
+                        del numList[elemCount - 1]
+                        del numList[elemCount - 1]
+                    else:
+                        tmp = mathlib.sqrt(numList[elemCount + 1], 2)
+                        del numList[elemCount]
+                        del numList[elemCount]
+                elif elemCount == 0:
                     tmp = mathlib.sqrt(numList[elemCount + 1], 2)
-                    del numList[elemCount - 1]
-                    del numList[elemCount - 1]
+                    del numList[elemCount]
+                    del numList[elemCount]
                 else:
                     raise SyntaxError
                 numList.insert(elemCount, tmp)
@@ -372,6 +386,7 @@ def numCalc(numList):
             elemCount += 1
             continue
 
+    print(numList, "vysledok")
     return numList[0]
 
 
