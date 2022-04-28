@@ -1,0 +1,29 @@
+TERMÍNY:
+	20.3. GitHub setup - xharma05
+		-> hotové 13.2. - xharma05
+	27.3. Návrh matematickej knižnice - všetci
+		-> hotové 13.2. - na návrhu se podíleli všichni
+	31.3. Naprogramovanie Matematickej knižnice -xharma05
+		-> hotové 16.2. - xharma05
+	3.4. GUI kalkulačky a hlavný program - xspirk01, xlojdo00
+		-> GUI hotové 3.4. - xlojdo00
+		-> hlavní program hotový 10.4. - xspirk01
+	10.4. Profiling - xmichl11
+		-> hotový 11.4. - xmichl11
+	17.4. Instalátor - xharma05
+		-> hotový 27.4. - xharma05
+	22.4. Finálna verzia GUI a hlavného programu - xspirk01, xlojdo00
+		-> hotovo 20.4. - xspirk01, xlojdo00
+	22.4. Debug - xharma05
+		-> hotový 25.4. - xharma05
+	24.4. Mock-upy - všetci
+		-> hotové 3.4. - na návrhu se podíleli všichni
+	24.4. Dokumentácia - xmichl11
+		-> hotové 28.4. - xmichl11, xlojdo00
+	29.4. Odovzdanie výsledného produktu - xharma05
+
+	-> zapomněli jsme do plánu dát makefile, hotový byl 27.4. - xmichl11
+	-> stejně tak jsme zapomněli zapsat deadline testů, hotové byly 15.2. - xharma05
+
+- jako komunikační kanály jsme používali discord a FB messenger
+- jako verzovací systém byl použit github
