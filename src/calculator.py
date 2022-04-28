@@ -59,6 +59,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         self.button_delete.clicked.connect(lambda: self.clear_last_number())
         self.button_clear_all.clicked.connect(lambda: self.clear_all())
 
+    """
+        @params self, event
+        @brief Reaguje na input z klávesnice a volá nami vytvorené funkcie.
+    """
     def keyPressEvent(self, event):
         char = event.text()
         button = event.key()
