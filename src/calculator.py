@@ -5,6 +5,7 @@
 
 """ @package Použivame PYQT5 pre výzor, našu matematickú knižnicu a naše gui"""
 from PyQt5 import QtWidgets
+from PyQt5.Qt import Qt
 from gui import window_calc
 import mathlib
 from PySide2 import QtWidgets, QtGui
@@ -57,6 +58,62 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
 
         self.button_delete.clicked.connect(lambda: self.clear_last_number())
         self.button_clear_all.clicked.connect(lambda: self.clear_all())
+
+    """
+        @params self, event
+        @brief Reaguje na input z klávesnice a volá nami vytvorené funkcie.
+    """
+    def keyPressEvent(self, event):
+        char = event.text()
+        button = event.key()
+        if char == "0":
+            self.pushed_number("0")
+        elif char == "1":
+            self.pushed_number("1")
+        elif char == "2":
+            self.pushed_number("2")
+        elif char == "3":
+            self.pushed_number("3")
+        elif char == "4":
+            self.pushed_number("4")
+        elif char == "5":
+            self.pushed_number("5")
+        elif char == "6":
+            self.pushed_number("6")
+        elif char == "7":
+            self.pushed_number("7")
+        elif char == "8":
+            self.pushed_number("8")
+        elif char == "9":
+            self.pushed_number("9")
+        elif char == "+":
+            self.pushed_math_operand("+")
+        elif char == "-":
+            self.pushed_math_operand("-")
+        elif char == "*":
+            self.pushed_math_operand("*")
+        elif char == "/":
+            self.pushed_math_operand("/")
+        elif char == "." or char == ",":
+            self.pushed_math_operand(".")
+        elif char == "(":
+            self.pushed_math_operand("(")
+        elif char == ")":
+            self.pushed_math_operand(")")
+        elif char == "^":
+            self.pushed_math_operand("^")
+        elif char == "e":
+            self.pushed_math_operand("e")
+        elif char == "!":
+            self.pushed_math_operand("!")
+
+        if button == Qt.Key_Enter:
+            self.equals()
+        elif button == Qt.Key_Delete:
+            self.clear_all()
+        elif button == Qt.Key_Backspace:
+            self.clear_last_number()
+
 
     """ 
         @params self, txt
@@ -165,6 +222,7 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
             numbers += 1
         else:
             self.display_bottom.setText(text + num)
+            numbers += 1
 
     """ 
         @params self
@@ -177,8 +235,10 @@ class Calculator_Window(QtWidgets.QMainWindow, window_calc):
         text = self.display_bottom.text()
         text = text[:-1]
         if len(memory) > 0:
-            memory.pop()
-            numbers -= 1
+            memory.clear()
+            for char in text:
+                if char.isnumeric():
+                    numbers += 1
         else:
             numbers += 1
         self.display_bottom.setText(text)
@@ -245,9 +305,11 @@ def calcRec(numlist):
 
     if numlist[0] == int(numlist[0]):
         numlist[0] = int(numlist[0])
-    if len(str(numlist[0])) > 7:
+    if -0.001 < numlist[0] < 0.001:
         numlist[0] = "{:.2E}".format(numlist[0])
-    elif numlist[0] < 0.001 and numlist[0] > -0.001:
+    elif -1000 < numlist[0] < 1000:
+        numlist[0] = round(numlist[0], 3)
+    elif len(str(numlist[0])) > 7:
         numlist[0] = "{:.2E}".format(numlist[0])
     else:
         numlist[0] = round(numlist[0], 4)
